@@ -12,6 +12,7 @@ function App() {
       <NavBar/>
       <Routes>
           <Route path="/" element={<LandingPage/>} />
+          <Route path="/about" element={<LandingPage/>} />
           <Route path='/users' element={<UsersIndex/>} />
           <Route path='/messages' element={<MessagesIndex/>} />
       </Routes>
