@@ -1,7 +1,7 @@
 {
   "name": "ab-takehome",
   "version": "0.1.0",
-  "homepage": "https://jessenreynolds.github.io/ab-takehome/",
+  "homepage": "https://jessenreynolds.github.io/ab-takehome/#/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
