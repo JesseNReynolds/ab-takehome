@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { Box, Stack } from '@mui/material';
 
 import MessageCard from './MessageCard';
+import NewMessage from './NewMessage';
+import ComposeNewMessageButton from './ComposeNewMessageButton';
 
 export default function MessagesIndex() {
 
   const [messages, setMessages] = useState([])
+  const [showNewMessageForm, setShowNewMessageForm] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +34,7 @@ export default function MessagesIndex() {
   return (
     <Box
       display="flex"
+      flexDirection='column'
       justifyContent="center"
       alignItems="center"
     >
@@ -39,7 +43,12 @@ export default function MessagesIndex() {
         justifyContent="center"
         alignItems="center"
         sx={{maxWidth: "85%"}}
-      >
+        >
+
+        {showNewMessageForm ? 
+        <NewMessage setShowNewMessageForm={setShowNewMessageForm}> </NewMessage> 
+        : <ComposeNewMessageButton setShowNewMessageForm={setShowNewMessageForm}></ComposeNewMessageButton>}
+        
         {messages.map(message => <MessageCard message={message} key={message._id} removeMessage={removeMessage}></MessageCard>)}
       </Stack>
     </Box>
