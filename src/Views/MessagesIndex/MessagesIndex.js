@@ -12,17 +12,17 @@ export default function MessagesIndex() {
   const [showNewMessageForm, setShowNewMessageForm] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch('https://vlhjn5wxv6.execute-api.ca-central-1.amazonaws.com/messages');
-      const json = await data.json();
-      setMessages(json);
-      setLoading(false)
-    }
+  const fetchData = async () => {
+    setLoading(true)
+    const data = await fetch('https://vlhjn5wxv6.execute-api.ca-central-1.amazonaws.com/messages');
+    const json = await data.json();
+    setMessages(json);
+    setLoading(false)
+  }
 
+  useEffect(() => {
     fetchData()
       .catch(err => {console.error(err); setLoading(false)})
-
   }, [])
 
   function removeMessage(id) {
@@ -47,8 +47,8 @@ export default function MessagesIndex() {
         >
 
         {showNewMessageForm ? 
-        <NewMessage setShowNewMessageForm={setShowNewMessageForm}> </NewMessage> 
-        : <ComposeNewMessageButton setShowNewMessageForm={setShowNewMessageForm}></ComposeNewMessageButton>}
+        <NewMessage setShowNewMessageForm={setShowNewMessageForm} fetchDataCallback={fetchData} /> 
+        : <ComposeNewMessageButton setShowNewMessageForm={setShowNewMessageForm} />}
 
         {loading ? <CircularProgress/> : messages.map(message => <MessageCard message={message} key={message._id} removeMessage={removeMessage}></MessageCard>)}
       </Stack>

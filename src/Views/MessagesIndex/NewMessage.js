@@ -21,8 +21,6 @@ function NewMessage(props) {
       message: event.target.elements.message.value
     }
 
-    console.log(newMessage)
-    
     if(!newMessage.to || !newMessage.from || !newMessage.message) {
       setShouldShowError(true)
       console.error("User tried to submit new message with one or more empty fields.")
@@ -36,7 +34,7 @@ function NewMessage(props) {
         },
         body: JSON.stringify(newMessage)
       })
-        .then(res => console.log(res))
+        .then(() => props.fetchDataCallback())
         .catch(err => console.error(err))
     }
 
