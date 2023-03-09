@@ -1,6 +1,8 @@
+import React, { useEffect, useState } from 'react'
+
 import { Stack } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useEffect, useState } from 'react'
+
 import UserCard from './UserCard';
 
 export default function UsersIndex() {

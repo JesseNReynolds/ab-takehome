@@ -1,10 +1,12 @@
 import React from 'react'
+
+import { Stack } from '@mui/system'
+
 import { Route, Routes } from 'react-router-dom'
 import LandingPage from './Views/LandingPage/LandingPage'
 import MessagesIndex from './Views/MessagesIndex/MessagesIndex'
 import UsersIndex from './Views/UsersIndex/UsersIndex'
-import NavBar from './Views/NavBar/NavBar.js'
-import { Stack } from '@mui/system'
+import NavBar from './NavBar/NavBar.js'
 
 function App() {
   return (

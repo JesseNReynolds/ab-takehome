@@ -1,5 +1,7 @@
-import { Box, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react'
+
+import { Box, Stack } from '@mui/material';
+
 import MessageCard from './MessageCard';
 
 export default function MessagesIndex() {
@@ -19,6 +21,13 @@ export default function MessagesIndex() {
 
   }, [])
 
+  function removeMessage(id) {
+    const index = messages.findIndex(message => message._id === id)
+    let copy = [...messages]
+    copy.splice(index, 1)
+    setMessages(copy)
+  }
+
   return (
     <Box
       display="flex"
@@ -31,7 +40,7 @@ export default function MessagesIndex() {
         alignItems="center"
         sx={{maxWidth: "85%"}}
       >
-        {messages.map(message => <MessageCard message={message} key={message._id}></MessageCard>)}
+        {messages.map(message => <MessageCard message={message} key={message._id} removeMessage={removeMessage}></MessageCard>)}
       </Stack>
     </Box>
   )
