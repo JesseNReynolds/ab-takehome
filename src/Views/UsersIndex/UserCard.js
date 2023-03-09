@@ -9,7 +9,7 @@ function UserCard(props) {
   return (
     <Grid container spacing={2} key={props.user._id} sx={{border: 1, borderRadius: 3, marginTop: 2}}>
       <Grid item xs={12}>
-        <Typography variant='h2' color="primary">{props.user.firstName}</Typography>
+        <Typography variant='h5' color="primary">{props.user.firstName}</Typography>
       </Grid>
       <Grid item xs={1}/>
       <Grid item xs={7}>
