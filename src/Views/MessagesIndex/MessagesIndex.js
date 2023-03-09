@@ -1,25 +1,24 @@
-import { Stack } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import UserCard from './UserCard';
+import MessageCard from './MessageCard';
 
-export default function UsersIndex() {
 
-  const [users, setUsers] = useState([])
+export default function MessagesIndex() {
+
+  const [messages, setMessages] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('https://vlhjn5wxv6.execute-api.ca-central-1.amazonaws.com/users');
+      const data = await fetch('https://vlhjn5wxv6.execute-api.ca-central-1.amazonaws.com/messages');
       const json = await data.json();
-      setUsers(json);
+      setMessages(json);
       console.log(json)
     }
 
     fetchData()
       .catch(err => console.error(err))
+
   }, [])
-
-
 
   return (
     <Box
@@ -33,7 +32,7 @@ export default function UsersIndex() {
       alignItems="center"
       sx={{maxWidth: "95%"}}
     >
-      {users.map(user => <UserCard user={user} key={user._id}></UserCard>)}
+      {messages.map(message => <MessageCard message={message} key={message._id}></MessageCard>)}
     </Stack>
     </Box>
   )
