@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { Box, Stack } from '@mui/material';
+import { Box, CircularProgress, Stack } from '@mui/material';
 
 import MessageCard from './MessageCard';
 import NewMessage from './NewMessage';
@@ -10,17 +10,18 @@ export default function MessagesIndex() {
 
   const [messages, setMessages] = useState([])
   const [showNewMessageForm, setShowNewMessageForm] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch('https://vlhjn5wxv6.execute-api.ca-central-1.amazonaws.com/messages');
       const json = await data.json();
       setMessages(json);
-      console.log(json)
+      setLoading(false)
     }
 
     fetchData()
-      .catch(err => console.error(err))
+      .catch(err => {console.error(err); setLoading(false)})
 
   }, [])
 
@@ -48,8 +49,8 @@ export default function MessagesIndex() {
         {showNewMessageForm ? 
         <NewMessage setShowNewMessageForm={setShowNewMessageForm}> </NewMessage> 
         : <ComposeNewMessageButton setShowNewMessageForm={setShowNewMessageForm}></ComposeNewMessageButton>}
-        
-        {messages.map(message => <MessageCard message={message} key={message._id} removeMessage={removeMessage}></MessageCard>)}
+
+        {loading ? <CircularProgress/> : messages.map(message => <MessageCard message={message} key={message._id} removeMessage={removeMessage}></MessageCard>)}
       </Stack>
     </Box>
   )
