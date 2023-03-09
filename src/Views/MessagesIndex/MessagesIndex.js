@@ -2,7 +2,6 @@ import { Box, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import MessageCard from './MessageCard';
 
-
 export default function MessagesIndex() {
 
   const [messages, setMessages] = useState([])
@@ -26,14 +25,14 @@ export default function MessagesIndex() {
       justifyContent="center"
       alignItems="center"
     >
-    <Stack
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      sx={{maxWidth: "85%"}}
-    >
-      {messages.map(message => <MessageCard message={message} key={message._id}></MessageCard>)}
-    </Stack>
+      <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        sx={{maxWidth: "85%"}}
+      >
+        {messages.map(message => <MessageCard message={message} key={message._id}></MessageCard>)}
+      </Stack>
     </Box>
   )
 
