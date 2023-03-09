@@ -34,12 +34,16 @@ function NewMessage(props) {
         },
         body: JSON.stringify(newMessage)
       })
-        .then(() => props.fetchDataCallback())
+        .then(() => handleSuccess())
         .catch(err => console.error(err))
     }
 
   }
 
+  function handleSuccess() {
+    props.fetchDataCallback()
+    props.setShowNewMessageForm(false)
+  }
 
   return (
     <form onSubmit={handleSubmit}>

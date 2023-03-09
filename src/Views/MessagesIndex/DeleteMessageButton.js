@@ -12,7 +12,6 @@ export default function DeleteMessageButton(props) {
   const [dialogOpen, setDialogOpen] = useState(false)
 
   function deleteMessage() {
-    console.log(props.messageId)
     fetch(`https://vlhjn5wxv6.execute-api.ca-central-1.amazonaws.com/messages/${props.messageId}`, {
       method: 'DELETE',
     })
