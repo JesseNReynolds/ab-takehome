@@ -13,11 +13,11 @@ export default function DeleteMessageButton(props) {
 
   function deleteMessage() {
     console.log(props.messageId)
-    // fetch(`https://vlhjn5wxv6.execute-api.ca-central-1.amazonaws.com/messages/${props.messageId}`, {
-    //   method: 'DELETE',
-    // })
-    //   .then(props.removeMessage(props.messageId))
-    //   .catch(err => console.error(err))
+    fetch(`https://vlhjn5wxv6.execute-api.ca-central-1.amazonaws.com/messages/${props.messageId}`, {
+      method: 'DELETE',
+    })
+      .then(props.removeMessage(props.messageId))
+      .catch(err => console.error(err))
     props.removeMessage(props.messageId)
   }
 

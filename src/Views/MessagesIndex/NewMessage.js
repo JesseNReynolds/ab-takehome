@@ -14,8 +14,8 @@ function NewMessage(props) {
   function handleSubmit(event) {
     event.preventDefault()
 
-    let newMessage = {
-      id: uuidv4(),
+    const newMessage = {
+      id: uuidv4().replaceAll('-', '').substring(0, 24),
       to: event.target.elements.to.value,
       from: event.target.elements.from.value,
       message: event.target.elements.message.value
@@ -26,7 +26,16 @@ function NewMessage(props) {
       console.error("User tried to submit new message with one or more empty fields.")
     } else {
       setShouldShowError(false)
-      
+      fetch(`https://vlhjn5wxv6.execute-api.ca-central-1.amazonaws.com/messages`, {
+        method: 'POST',
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newMessage)
+      })
+        .then(res => console.log(res))
+        .catch(err => console.error(err))
     }
 
   }
@@ -35,8 +44,8 @@ function NewMessage(props) {
   return (
     <form onSubmit={handleSubmit}>
       <Grid container spacing={2} sx={{border: 1, borderRadius: 3, marginTop: 2}}> 
-        <Grid item>
-        {shouldShowError ? <Alert severity='error'>You must fill out all fields in order to post a new message!</Alert> : <></>}
+        <Grid item xs={11}>
+            {shouldShowError ? <Alert severity='error'>You must fill out all fields in order to post a new message!</Alert> : <></>}
         </Grid>
         <Grid item xs={3}>
           <TextField variant='standard'
@@ -66,7 +75,7 @@ function NewMessage(props) {
             alignItems="center"
             sx={{marginBottom: 2}}
           >
-            <Button variant="contained" type='submit' endIcon={<SendIcon/>}>Post New Message</Button>
+            <Button variant="contained" type='submit' endIcon={<SendIcon/>}>Send</Button>
             <Button variant='standard' onClick={() => props.setShowNewMessageForm(false)}>Cancel</Button>
           </Box>
         </Grid>
