@@ -1,7 +1,8 @@
+import React from 'react'
+
 import { Grid, Typography } from '@mui/material'
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import GppBadIcon from '@mui/icons-material/GppBad';
-import React from 'react'
 
 function UserCard(props) {
 
