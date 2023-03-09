@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import {Link} from 'react-router-dom'
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -69,7 +71,7 @@ function NavBar(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }} href={`/${item.toLowerCase()}`}>
+              <Button key={item} sx={{ color: '#fff' }} to={`/${item.toLowerCase()}`} component={Link}>
                 {item}
               </Button>
             ))}
