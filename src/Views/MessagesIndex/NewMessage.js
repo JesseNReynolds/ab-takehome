@@ -21,6 +21,8 @@ function NewMessage(props) {
       message: event.target.elements.message.value
     }
 
+    console.log(newMessage)
+    
     if(!newMessage.to || !newMessage.from || !newMessage.message) {
       setShouldShowError(true)
       console.error("User tried to submit new message with one or more empty fields.")
