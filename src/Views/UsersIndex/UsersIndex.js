@@ -31,7 +31,7 @@ export default function UsersIndex() {
       direction="column"
       justifyContent="center"
       alignItems="center"
-      sx={{maxWidth: "95%"}}
+      sx={{maxWidth: "85%"}}
     >
       {users.map(user => <UserCard user={user} key={user._id}></UserCard>)}
     </Stack>

@@ -30,7 +30,7 @@ export default function MessagesIndex() {
       direction="column"
       justifyContent="center"
       alignItems="center"
-      sx={{maxWidth: "95%"}}
+      sx={{maxWidth: "85%"}}
     >
       {messages.map(message => <MessageCard message={message} key={message._id}></MessageCard>)}
     </Stack>
