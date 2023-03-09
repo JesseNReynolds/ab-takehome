@@ -5,7 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import { DialogTitle } from '@mui/material';
+import { Button, DialogTitle } from '@mui/material';
 
 export default function DeleteMessageButton(props) {
 
@@ -32,13 +32,13 @@ export default function DeleteMessageButton(props) {
           <DialogContentText>This can't be undone.</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <button onClick={() => {setDialogOpen(false); deleteMessage()}}>
+          <Button onClick={() => {setDialogOpen(false); deleteMessage()}}>
             Yes
-          </button>
+          </Button>
 
-          <button onClick={() => setDialogOpen(false)}autoFocus>
+          <Button onClick={() => setDialogOpen(false)}autoFocus>
             No
-          </button>
+          </Button>
         </DialogActions>
       </Dialog>
     </>
