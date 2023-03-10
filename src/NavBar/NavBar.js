@@ -37,7 +37,7 @@ function NavBar(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} href={`/${item.toLowerCase()}`} component={Link}>
+            <ListItemButton sx={{ textAlign: 'center' }} to={`/${item.toLowerCase()}`} component={Link}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
